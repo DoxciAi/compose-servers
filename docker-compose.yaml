@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+
+  api:
+    image: ghcr.io/doxciai/doxci-api:latest
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    depends_on:
+      - rabbit
+
+  rabbit:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
