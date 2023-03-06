@@ -1,5 +1,6 @@
 # Requirements
 1. This was tested with Docker version `23.0.1` and docker-compose version `1.25.0`.
+
 2. Authorize in Github using this [tutorial](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic):
   - Create a Personal Access Token (PAT).
 
