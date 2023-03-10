@@ -3,20 +3,25 @@ version: "3.3"
 services:
 
   api:
-    image: ghcr.io/doxciai/doxci-api:latest
+    image: ghcr.io/doxciai/doxci-api:vzs2
     ports:
-      - "80:80"
+      - "8000:80"
     env_file:
       - .env
     depends_on:
-      - rabbit
+      - redis
 
-  rabbit:
-    image: rabbitmq
+  upload-api:
+    image: ghcr.io/doxciai/doxci-upload-api:vzs2
     ports:
-      - "5672:5672"
+      - "8080:80"
+    env_file:
+      - .env
+    depends_on:
+      - redis
 
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
+    command: --requirepass ${REDIS_PASSWORD}
